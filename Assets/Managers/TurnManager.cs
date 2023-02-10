@@ -6,6 +6,7 @@ public class TurnManager : MonoBehaviour
 
 {
     public bool Playerturn = true;
+   
 
     private void Update()
     {
@@ -15,20 +16,23 @@ public class TurnManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A)) // 누르면
             {
                 //랜덤 공격 코드 작성
-                Turnchange();
+                ETurnchange(); // e로 턴 변경
             }
         }
         else
         {
             //적 한칸씩 오는거 
-            
+
+            Playerturn = true;
         }
     }
 
-    public void Turnchange()
+    public void ETurnchange()
     {
         Playerturn = !Playerturn;
     }
+
+   
 }
 
        
