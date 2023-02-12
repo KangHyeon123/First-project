@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private Vector2 direction;
-    public void Shoot(Vector3 direction)
+    
+    private void OnCollisionEnter2D(Collision2D other)
+
     {
-        this.direction = direction;
+
+        if (other.collider.tag == "Monster")
+
+        {
+            
+            //애니메이션
+            ObjectPool.ReturnObject(this);
+
+        }
+
     }
 
-    public void DestroyBullet()
-    {
-        ObjectPool.ReturnObject(this);
-    }
-
-    void Update()
-    {
-        transform.Translate(direction);   
-    }
 }

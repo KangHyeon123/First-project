@@ -9,7 +9,7 @@ public class Attack : MonoBehaviour
     public GameObject bulletPrefab;
     public float shootingInterval = 0.5f;
     public float bulletSpeed = 5f;
-    public List<GameObject> enemies;
+    public List<GameObject> enemies;//게임 오브젝트 말고 몬스터로 넣기
     private int bulletDmg;
     private int bulletNum;
     
@@ -69,7 +69,7 @@ public class Attack : MonoBehaviour
         Targetting();
         //한놈이 죽을때까지 때려야함
         Vector2 direction = (target.transform.position - transform.position).normalized;
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        var bullet = ObjectPool.GetObject();
         Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
         bulletRigidbody.velocity = direction * bulletSpeed;
         target.hp -= bulletDmg; //닿으면 애니메이션
